@@ -1,13 +1,29 @@
+// This is a golang program for learning go and has a few assorted programs!
 package main
 
 import (
-	"database/sql"
+	//"database/sql"
+	//"log"
+	//"time"
+
 	"fmt"
-	"log"
-	"time"
 
 	_ "github.com/go-sql-driver/mysql"
+	"github.com/sid-008/Learning-Golang/mux"
 )
+
+func main() {
+	var i int
+	fmt.Println("Enter which code you want to run: ")
+	fmt.Println("1. http server with mux thing(yes this is vague look at the package)")
+	fmt.Scanln(&i)
+
+	switch i {
+	case 1:
+		mux.Server()
+
+	}
+}
 
 // http server,
 /*func main() {
@@ -33,7 +49,7 @@ import (
 	http.ListenAndServe(":3000", r)
 }*/
 
-func main() {
+/*func main() {
 	db, err := sql.Open("mysql", "root:admin@(localhost)/db_1?parseTime=true")
 	if err != nil {
 		log.Fatal(err)
@@ -56,7 +72,7 @@ func main() {
 
 		if _, err := db.Exec(query); err != nil {
 			log.Fatal(err)
-		}*/
+		}
 
 	{ //insert a new user
 		username := "malice"
@@ -129,4 +145,4 @@ func main() {
 			log.Fatal(err)
 		}
 	}
-}
+}*/
