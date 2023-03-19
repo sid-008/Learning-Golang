@@ -1,63 +1,16 @@
-// This is a golang program for learning go and has a few assorted programs!
-package main
+package mysql
 
 import (
-	//"database/sql"
-	//"time"
-
+	"database/sql"
 	"fmt"
 	"log"
+	"time"
 
 	_ "github.com/go-sql-driver/mysql"
-
-	"github.com/sid-008/Learning-Golang/mux"
-	"github.com/sid-008/Learning-Golang/mysql"
 )
 
-func main() {
-	var i int
-	fmt.Println("Enter which code you want to run: ")
-	fmt.Println("1. http server with mux thing(yes this is vague look at the package)")
-	fmt.Println("2. SQL demo")
-	fmt.Scanln(&i)
-
-	switch i {
-	case 1:
-		log.Println("Server started on port 3000")
-		mux.Server()
-	case 2:
-		log.Println("Server started...")
-		mysql.Server()
-	}
-
-}
-
-// http server,
-/*func main() {
-	r := mux.NewRouter()
-
-	r.HandleFunc(
-		"/books/{title}/page/{page}/car/{car}",
-		func(w http.ResponseWriter, r *http.Request) {
-			vars := mux.Vars(r)
-			title := vars["title"]
-			page := vars["page"]
-			car := vars["car"]
-
-			fmt.Fprintf(w, "you've requested %s page num %s\n", title, page)
-			fmt.Fprintf(w, "car: %s", car)
-		},
-	)
-
-	r.HandleFunc("/", func(w http.ResponseWriter, r *http.Request) {
-		fmt.Fprintf(w, "hello")
-	})
-
-	http.ListenAndServe(":3000", r)
-}*/
-
-/*func main() {
-	db, err := sql.Open("mysql", "root:admin@(localhost)/db_1?parseTime=true")
+func Server() {
+	db, err := sql.Open("mysql", "root:admin@(localhost)/db_1?parseTime=true") //exec with sudo
 	if err != nil {
 		log.Fatal(err)
 	}
@@ -68,18 +21,20 @@ func main() {
 		log.Println("db connected!")
 	}
 
-	/*query := `
-	    CREATE TABLE users (
-	        id INT AUTO_INCREMENT,
-	        username TEXT NOT NULL,
-	        password TEXT NOT NULL,
-	        created_at DATETIME,
-	        PRIMARY KEY (id)
-	    );`
+	/*Create a table in db_1
+	query := `
+	   CREATE TABLE users (
+	       id INT AUTO_INCREMENT,
+	       username TEXT NOT NULL,
+	       password TEXT NOT NULL,
+	       created_at DATETIME,
+	       PRIMARY KEY (id)
+	   );`
 
 		if _, err := db.Exec(query); err != nil {
 			log.Fatal(err)
 		}
+	*/
 
 	{ //insert a new user
 		username := "malice"
@@ -147,9 +102,9 @@ func main() {
 	}
 
 	{ // Delete user by id
-		_, err := db.Exec(`DELETE FROM users WHERE id = ?`, 5)
+		_, err := db.Exec(`DELETE FROM users WHERE id = ?`, 7)
 		if err != nil {
 			log.Fatal(err)
 		}
 	}
-}*/
+}
