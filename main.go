@@ -1,4 +1,5 @@
 // This is a golang program for learning go and has a few assorted programs!
+// template program implemented in its own dir
 package main
 
 import (
